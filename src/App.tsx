@@ -1,4 +1,4 @@
-import { Center, Stack, Text } from '@chakra-ui/react';
+import { Center, Container, Stack, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import bgImage from './assets/background.png';
 import Question from './components/Question';
@@ -31,13 +31,18 @@ function App() {
       height="100vh"
       userSelect="none"
     >
-      <Stack direction="column">
-        <Text color="white" fontWeight="bold" fontSize="4xl">
-          COUNTRY QUIZ
-        </Text>
-        <Question onQuestionAnswered={onQuestionAnswered} question={question} />
-        {isGameOver && <Text>game over: {score}</Text>}
-      </Stack>
+      <Container>
+        <Stack direction="column">
+          <Text color="white" fontWeight="bold" fontSize={['2xl', '4xl']}>
+            COUNTRY QUIZ
+          </Text>
+          <Question
+            onQuestionAnswered={onQuestionAnswered}
+            question={question}
+          />
+          {isGameOver && <Text>game over: {score}</Text>}
+        </Stack>
+      </Container>
     </Center>
   );
 }

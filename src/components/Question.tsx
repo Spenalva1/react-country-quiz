@@ -67,17 +67,17 @@ function Question({ question, onQuestionAnswered }: QuestionProps) {
 
   return (
     <Stack
-      py="16"
+      py={[12, 16]}
       px="8"
       backgroundColor="white"
-      w="465px"
+      maxW="465px"
       color="#2F527B"
       position="relative"
       gap="3"
       borderRadius="3xl"
     >
       <Image
-        width="160px"
+        w={['125px', '160px']}
         position="absolute"
         top="0"
         right="0"
