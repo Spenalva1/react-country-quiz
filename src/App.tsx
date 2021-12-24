@@ -31,9 +31,14 @@ function App() {
       height="100vh"
       userSelect="none"
     >
-      <Container>
+      <Container maxW="465px">
         <Stack direction="column">
-          <Text color="white" fontWeight="bold" fontSize={['2xl', '4xl']}>
+          <Text
+            as="h1"
+            color="white"
+            fontWeight="bold"
+            fontSize={['2xl', '4xl']}
+          >
             COUNTRY QUIZ
           </Text>
           <Question

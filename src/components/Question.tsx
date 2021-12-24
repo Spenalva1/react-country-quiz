@@ -70,7 +70,6 @@ function Question({ question, onQuestionAnswered }: QuestionProps) {
       py={[12, 16]}
       px="8"
       backgroundColor="white"
-      maxW="465px"
       color="#2F527B"
       position="relative"
       gap="3"
