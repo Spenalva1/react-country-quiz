@@ -1,6 +1,7 @@
-import { Center, Container, Stack, Text } from '@chakra-ui/react';
+import { Box, Center, Container, Stack, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import bgImage from './assets/background.png';
+import GameOver from './components/GameOver';
 import Question from './components/Question';
 import { getQuestion } from './lib/getQuestion';
 import { IQuestion } from './types/types';
@@ -15,12 +16,16 @@ function App() {
   const onQuestionAnswered = (answeredCorectly: boolean) => {
     if (answeredCorectly) {
       setScore((prev) => prev + 1);
-      setTimeout(() => {
-        setQuestion(getQuestion());
-      }, 1000);
+      setQuestion(getQuestion());
     } else {
       setIsGameOver(true);
     }
+  };
+
+  const onGameRestart = () => {
+    setScore(0);
+    setIsGameOver(false);
+    setQuestion(getQuestion());
   };
 
   return (
@@ -41,11 +46,24 @@ function App() {
           >
             COUNTRY QUIZ
           </Text>
-          <Question
-            onQuestionAnswered={onQuestionAnswered}
-            question={question}
-          />
-          {isGameOver && <Text>game over: {score}</Text>}
+          <Box
+            py={[8, 12]}
+            px="8"
+            backgroundColor="white"
+            color="#2F527B"
+            borderRadius="3xl"
+            position="relative"
+          >
+            {!isGameOver && (
+              <Question
+                onQuestionAnswered={onQuestionAnswered}
+                question={question}
+              />
+            )}
+            {isGameOver && (
+              <GameOver score={score} onGameRestart={onGameRestart} />
+            )}
+          </Box>
         </Stack>
       </Container>
     </Center>

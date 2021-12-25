@@ -1,4 +1,4 @@
-import { Box, Image, Stack, Text } from '@chakra-ui/react';
+import { background, Box, Button, Image, Stack, Text } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { IQuestion, IQuestionOption } from '../types/types';
@@ -62,19 +62,10 @@ function Question({ question, onQuestionAnswered }: QuestionProps) {
       isSelected: true,
       option,
     });
-    onQuestionAnswered(option.correct);
   };
 
   return (
-    <Stack
-      py={[12, 16]}
-      px="8"
-      backgroundColor="white"
-      color="#2F527B"
-      position="relative"
-      gap="3"
-      borderRadius="3xl"
-    >
+    <Stack gap="4">
       <Image
         w={['125px', '160px']}
         position="absolute"
@@ -164,6 +155,28 @@ function Question({ question, onQuestionAnswered }: QuestionProps) {
           </Box>
         ))}
       </Stack>
+      {optionSelected.isSelected && optionSelected.option && (
+        <Box textAlign="right">
+          <Button
+            w="auto"
+            marginLeft="auto"
+            colorScheme="orange"
+            color="white"
+            bg="#F9A826"
+            _hover={{
+              background: '#e58f06',
+            }}
+            _active={{
+              background: '#e58f06',
+            }}
+            onClick={() =>
+              onQuestionAnswered(optionSelected.option?.correct || false)
+            }
+          >
+            Next
+          </Button>
+        </Box>
+      )}
     </Stack>
   );
 }
